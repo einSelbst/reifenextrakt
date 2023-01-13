@@ -1,7 +1,5 @@
 {
-  "exclude": [
-    "node_modules"
-  ],
+  "exclude": ["node_modules"],
   "extends": "tsconfig/nextjs.json",
   "compilerOptions": {
     "rootDir": ".",

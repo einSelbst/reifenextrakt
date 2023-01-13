@@ -1,6 +1,6 @@
-import DashboardLayout from './DashboardLayout';
+import DashboardLayout from './DashboardLayout'
 
 // This is a Server Component
 export default function Layout({ children }) {
-  return <DashboardLayout>{children}</DashboardLayout>;
+  return <DashboardLayout>{children}</DashboardLayout>
 }
