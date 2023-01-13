@@ -3,10 +3,12 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev --no-cache --continue",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
+    "format": "prettier --check --write --ignore-unknown .",
+    "format:plugins": "prettier --check --write --ignore-unknown . --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-sh --plugin=prettier-plugin-toml",
+    "format:original": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
     "test": "turbo run test",
-    "clean": "turbo run clean && rm -rf node_modules",
+    "clean": "turbo run clean",
     "changeset": "changeset",
     "version-packages": "changeset version",
     "release": "turbo run build --filter=docs^... && changeset publish"
