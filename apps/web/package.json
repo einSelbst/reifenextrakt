@@ -6,7 +6,8 @@
     "build": "next build",
     "clean": "rm -rf .next",
     "dev": "next dev -p 3003",
-    "lint": "TIMING=1 next lint",
+    "lint:original": "TIMING=1 next lint",
+    "lint": "tsc --noEmit && TIMING=1 eslint . --format=pretty --cache",
     "start": "next start "
   },
   "dependencies": {

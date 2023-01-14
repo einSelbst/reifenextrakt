@@ -7,6 +7,7 @@
     "format:plugins": "prettier --check --write --ignore-unknown . --plugin=prettier-plugin-tailwindcss --plugin=prettier-plugin-sh --plugin=prettier-plugin-toml",
     "format:original": "prettier --write \"**/*.{ts,tsx,md}\"",
     "lint": "turbo run lint",
+    "lint:force": "turbo run lint --force",
     "test": "turbo run test",
     "clean": "turbo run clean",
     "changeset": "changeset",
