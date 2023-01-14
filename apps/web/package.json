@@ -6,7 +6,8 @@
     "build": "next build",
     "clean": "rm -rf .next",
     "dev": "next dev -p 3003",
-    "lint": "TIMING=1 next lint",
+    "lint:original": "TIMING=1 next lint",
+    "lint": "tsc --noEmit && TIMING=1 eslint . --format=pretty --cache",
     "start": "next start "
   },
   "dependencies": {
@@ -22,6 +23,7 @@
     "@types/node": "^18.11.5",
     "@types/react": "^18.0.23",
     "@types/react-dom": "^18.0.7",
+    "eslint-config-custom": "workspace:*",
     "tsconfig": "workspace:*",
     "typescript": "^4.8.4"
   }
