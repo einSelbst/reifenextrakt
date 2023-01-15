@@ -7,13 +7,13 @@
     "clean": "rm -rf .next",
     "dev": "next dev -p 3002",
     "lint:original": "TIMING=1 next lint",
-    "lint": "TIMING=1 eslint . --format=pretty --cache",
-    "lint:tsc": "tsc --noEmit && TIMING=1 eslint . --format=pretty --cache",
+    "lint": "tsc --noEmit && TIMING=1 eslint . --format=pretty --cache",
     "start": "next start "
   },
   "dependencies": {
     "logger": "workspace:*",
     "next": "latest",
+    "next-auth": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "ui": "workspace:*"
