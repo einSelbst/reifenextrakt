@@ -9,7 +9,7 @@
         "api/**",
         "public/build/**"
       ],
-      "env": ["ZITADEL_ISSUER", "ZITADEL_CLIENT_ID", "ZITADEL_CLIENT_SECRET"],
+      "env": ["ZITADEL_ISSUER", "ZITADEL_CLIENT_ID", "ZITADEL_CLIENT_SECRET", "ZITADEL_CALLBACK_URL"],
       "dependsOn": ["^build"]
     },
     "test": {

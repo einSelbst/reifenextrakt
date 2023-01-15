@@ -38,7 +38,7 @@ export default function Home() {
             <button
               onClick={() =>
                 signIn('zitadel', {
-                  callbackUrl: 'http://localhost:3002/profile',
+                  callbackUrl: process.env.ZITADEL_CALLBACK_URL!,
                 })
               }>
               Sign in
