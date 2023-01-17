@@ -30,7 +30,7 @@ configureWunderGraphApplication({
 	],
 	cors: {
 		...cors.allowAll,
-		allowedOrigins: process.env.NODE_ENV === 'production' ? ['http://localhost:3000'] : ['http://localhost:3000'],
+		allowedOrigins: process.env.NODE_ENV === 'production' ? ['http://localhost:3002'] : ['http://localhost:3002'],
 	},
 	authentication: {
 		cookieBased: {

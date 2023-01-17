@@ -3,12 +3,16 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "build": "next build",
-    "clean": "rm -rf .next",
-    "dev": "next dev -p 3002",
+    "dev:wundergraph": "wunderctl up --debug",
+    "dev:next": "next dev -p 3002",
+    "dev": "pnpm dev:wundergraph & pnpm dev:next",
+    "build:wundergraph": "wunderctl generate --debug",
+    "build:next": "next build",
+    "build": "pnpm build:wundergraph & pnpm build:next",
+    "start": "next start",
+    "clean": "rm -rf .next && rm -rf generated",
     "lint:original": "TIMING=1 next lint",
-    "lint": "tsc --noEmit && TIMING=1 eslint . --format=pretty --cache",
-    "start": "next start "
+    "lint": "tsc --noEmit && TIMING=1 eslint . --format=pretty --cache"
   },
   "dependencies": {
     "@tanstack/react-query": "4.22.0",
