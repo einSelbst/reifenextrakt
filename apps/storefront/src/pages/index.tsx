@@ -8,9 +8,13 @@ import { log } from 'logger'
 import { CounterButton, NewTabLink } from 'ui'
 import { signIn, signOut, useSession } from 'next-auth/react'
 
+/* import { NextPage } from 'next' */
+import { useQuery } from '../lib/wundergraph'
+
 export default function Home() {
   log('Hey! This is Home.')
   const { data: session } = useSession()
+  const dragons = useQuery({ operationName: 'Dragons' })
 
   return (
     <div className={styles.container}>
@@ -27,6 +31,8 @@ export default function Home() {
             Next.js with ZITADEL!
           </a>
         </h1>
+
+        <div>{JSON.stringify(dragons.data)}</div>
 
         <p className={styles.description}>
           Get started by editing{' '}
