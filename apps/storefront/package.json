@@ -11,6 +11,11 @@
     "start": "next start "
   },
   "dependencies": {
+    "@tanstack/react-query": "4.22.0",
+    "@wundergraph/nextjs": "0.8.0",
+    "@wundergraph/react-query": "0.3.0",
+    "@wundergraph/sdk": "0.131.0",
+    "graphql": "16.6.0",
     "logger": "workspace:*",
     "next": "latest",
     "next-auth": "latest",
