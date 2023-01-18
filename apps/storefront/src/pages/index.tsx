@@ -1,3 +1,4 @@
+import { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
 
@@ -7,10 +8,13 @@ import styles from '../styles/Home.module.css'
 import { log } from 'logger'
 import { CounterButton, NewTabLink } from 'ui'
 import { signIn, signOut, useSession } from 'next-auth/react'
+import { useQuery } from '../lib/wundergraph'
 
-export default function Home() {
+/* function Home() { */
+const Home: NextPage = () => {
   log('Hey! This is Home.')
   const { data: session } = useSession()
+  const dragons = useQuery({ operationName: 'Dragons' })
 
   return (
     <div className={styles.container}>
@@ -27,6 +31,8 @@ export default function Home() {
             Next.js with ZITADEL!
           </a>
         </h1>
+
+        <div>{JSON.stringify(dragons.data)}</div>
 
         <p className={styles.description}>
           Get started by editing{' '}
@@ -79,3 +85,5 @@ export default function Home() {
     </div>
   )
 }
+
+export default Home
