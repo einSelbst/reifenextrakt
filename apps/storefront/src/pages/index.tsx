@@ -14,7 +14,9 @@ import { useQuery } from '../lib/wundergraph'
 const Home: NextPage = () => {
   log('Hey! This is Home.')
   const { data: session } = useSession()
+  const stores = useQuery({ operationName: 'AllStores' })
   const dragons = useQuery({ operationName: 'Dragons' })
+  /* const refresh = () => { stores.mutate() } */
 
   return (
     <div className={styles.container}>
@@ -61,6 +63,17 @@ const Home: NextPage = () => {
         <Profile />
 
         <CounterButton />
+
+        <div className='mx-auto flex max-w-sm flex-col items-center'>
+          <p className='mt-3 mb-8 text-center text-black/80'>
+            This is the result of your{' '}
+            <code className='font-mono font-medium text-amber-500 font-bold'>
+              AllStores
+            </code>{' '}
+            operation.
+          </p>
+          <code className='p-3'>{JSON.stringify(stores, null, 2)}</code>
+        </div>
 
         <p className='description'>
           Built With{' '}
