@@ -9,9 +9,23 @@ export interface GraphQLError {
 	path?: ReadonlyArray<string | number>;
 }
 
+export interface AllStoresResponse {
+	data?: AllStoresResponseData;
+	errors?: ReadonlyArray<GraphQLError>;
+}
+
 export interface DragonsResponse {
 	data?: DragonsResponseData;
 	errors?: ReadonlyArray<GraphQLError>;
+}
+
+export interface AllStoresResponseData {
+	allStores: {
+		data: {
+			_id: string;
+			name: string;
+		}[];
+	};
 }
 
 export interface DragonsResponseData {
