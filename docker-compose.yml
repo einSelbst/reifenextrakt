@@ -1,0 +1,115 @@
+version: "3"
+
+services:
+  # web:
+  #   container_name: nfg
+  #   image: no-fucks-given-web:latest
+  #   build:
+  #     context: .
+  #     dockerfile: ./apps/web/Dockerfile
+  #   restart: always
+  #   ports:
+  #     - 3000:80
+  #   networks:
+  #     - app_network
+
+# Define a network, which allows containers to communicate
+# with each other, by using their container name as a hostname
+# networks:
+#   app_network:
+#     external: true
+
+# version: '3'
+
+# services:
+#   web:
+#     container_name: web
+#     build:
+#       context: .
+#       dockerfile: ./apps/web/Dockerfile
+#     restart: always
+#     ports:
+#       - 3000:3000
+#     networks:
+#       - app_network
+
+#   # api:
+#   #   container_name: api
+#   #   build:
+#   #     context: .
+#   #     dockerfile: ./apps/api/Dockerfile
+#   #   restart: always
+#   #   ports:
+#   #     - 3001:3001
+#   #   networks:
+#   #     - app_network
+
+#   # auth-backend:
+#   #   build:
+#   #     context: ./auth-backend
+#   #   ports:
+#   #     - 3002:3002
+#   #   networks:#   #     - app_network
+
+#   # client:
+#   #   build:
+#   #     context: ./client
+#   #   volumes:
+#   #     - staticbuild:/app/out
+#   #   networks:
+#   #     - app_network
+
+#   # nginx:
+#   #   build:
+#   #     context: ./nginx
+#   #   volumes:
+#   #     - staticbuild:/app/public
+#   #   ports:
+#   #     - 8080:80
+#   #   networks:
+#   #     - app_network
+  garage:
+    # image: postgres:14.1-alpine
+    # image: postgis/postgis:14-3.3-alpine // no sfcgal support
+    image: postgis/postgis:15-3.3
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: secret
+      POSTGRES_DB: postgres
+    ports:
+      - '5433:5432'
+    volumes:
+      - garage-volume:/var/lib/postgresql/data/
+
+  habitat-fauna:
+    image: fauna/faunadb:latest
+    restart: unless-stopped
+    ports:
+      - '8443:8443'
+      - '8084:8084'
+      - '8444'
+    volumes:
+      - lib:/var/lib/faunadb
+      - log:/var/log/faunadb
+    logging:
+      driver: json-file
+      options:
+        max-size: '5m'
+        max-file: '1'
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8443/ping"]
+      interval: 30s
+      timeout: 10s
+      retries: 5
+
+volumes:
+  garage-volume:
+  lib:
+    driver: local
+  log:
+    driver: local
+  # staticbuild:
+# networks:
+# dev:
+# driver: bridge
