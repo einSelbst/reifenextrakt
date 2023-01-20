@@ -9,6 +9,18 @@ import {
 import server from './wundergraph.server'
 import operations from './wundergraph.operations'
 
+const faunaDB = introspect.graphql({
+  apiNamespace: 'faunaDB',
+  url: new EnvironmentVariable('FAUNADB_GRAPHQL_URL'),
+  headers: builder => {
+    builder.addStaticHeader(
+      'Authorization',
+      new EnvironmentVariable('FAUNADB_TOKEN')
+    )
+    return builder
+  },
+})
+
 const spaceX = introspect.graphql({
   apiNamespace: 'spacex',
   url: 'https://spacex-api.fly.dev/graphql/',
@@ -16,7 +28,7 @@ const spaceX = introspect.graphql({
 
 // configureWunderGraph emits the configuration
 configureWunderGraphApplication({
-  apis: [spaceX],
+  apis: [faunaDB, spaceX],
   server,
   operations,
   codeGenerators: [
