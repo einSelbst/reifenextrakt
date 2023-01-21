@@ -30,7 +30,7 @@ const Home: NextPage = () => {
         <h1 className={styles.title}>
           Welcome to{' '}
           <a href='https://github.com/zitadel/zitadel-examples/tree/main/nextjs'>
-            Next.js with ZITADEL!
+            Next.js with ZITADEL! and WunderGraph and Fauna
           </a>
         </h1>
 
