@@ -44,8 +44,8 @@ configureWunderGraphApplication({
     ...cors.allowAll,
     allowedOrigins:
       process.env.NODE_ENV === 'production'
-        ? ['http://localhost:3002']
-        : ['http://localhost:3002'],
+      ? ['https://cloud-starter.wundergraph.dev']
+      : ['http://localhost:3002'],
   },
   authentication: {
     cookieBased: {
