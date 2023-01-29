@@ -14,7 +14,8 @@ import { useQuery } from '../lib/wundergraph'
 const Home: NextPage = () => {
   log('Hey! This is Home.')
   const { data: session } = useSession()
-  const stores = useQuery({ operationName: 'AllStores' })
+  const autos = useQuery({ operationName: 'AllAutos' })
+  /* const stores = useQuery({ operationName: 'AllStores' }) */
   const dragons = useQuery({ operationName: 'Dragons' })
   /* const refresh = () => { stores.mutate() } */
 
@@ -72,7 +73,7 @@ const Home: NextPage = () => {
             </code>{' '}
             operation.
           </p>
-          <code className='p-3'>{JSON.stringify(stores, null, 2)}</code>
+          <code className='p-3'>{JSON.stringify(autos, null, 2)}</code>
         </div>
 
         <p className='description'>
