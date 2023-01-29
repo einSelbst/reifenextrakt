@@ -12,21 +12,7 @@ import {
 	SubscriptionEventHandler,
 	FetchUserRequestOptions,
 } from "@wundergraph/sdk/client";
-import type {
-	AllAutosResponse,
-	AllAutosResponseData,
-	DragonsResponse,
-	DragonsResponseData,
-	UsersGetResponse,
-	UsersGetInput,
-	UsersGetResponseData,
-	UsersSubscribeResponse,
-	UsersSubscribeInput,
-	UsersSubscribeResponseData,
-	UsersUpdateResponse,
-	UsersUpdateInput,
-	UsersUpdateResponseData,
-} from "./models";
+import type { AllAutosResponse, AllAutosResponseData, DragonsResponse, DragonsResponseData } from "./models";
 
 export type UserRole = "admin" | "user";
 
@@ -43,7 +29,7 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "7d66de29",
+	applicationHash: "73caf4b9",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.132.1",
 };
@@ -53,15 +39,6 @@ export const operationMetadata: OperationMetadata = {
 		requiresAuthentication: false,
 	},
 	Dragons: {
-		requiresAuthentication: false,
-	},
-	"users/get": {
-		requiresAuthentication: false,
-	},
-	"users/subscribe": {
-		requiresAuthentication: false,
-	},
-	"users/update": {
 		requiresAuthentication: false,
 	},
 };
@@ -123,29 +100,11 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
-	"users/get": {
-		input: UsersGetInput;
-		data: UsersGetResponseData;
-		requiresAuthentication: false;
-		liveQuery: boolean;
-	};
 };
 
-export type Mutations = {
-	"users/update": {
-		input: UsersUpdateInput;
-		data: UsersUpdateResponseData;
-		requiresAuthentication: false;
-	};
-};
+export type Mutations = {};
 
-export type Subscriptions = {
-	"users/subscribe": {
-		input: UsersSubscribeInput;
-		data: UsersSubscribeResponseData;
-		requiresAuthentication: false;
-	};
-};
+export type Subscriptions = {};
 
 export type LiveQueries = {
 	AllAutos: {
@@ -157,12 +116,6 @@ export type LiveQueries = {
 	Dragons: {
 		input?: undefined;
 		data: DragonsResponseData;
-		liveQuery: true;
-		requiresAuthentication: false;
-	};
-	"users/get": {
-		input: UsersGetInput;
-		data: UsersGetResponseData;
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
