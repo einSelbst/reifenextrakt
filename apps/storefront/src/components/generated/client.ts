@@ -4,6 +4,7 @@ import {
 	CreateClientConfig,
 	User,
 	UploadRequestOptions,
+	UploadRequestOptionsWithProfile,
 	OperationMetadata,
 	OperationsDefinition,
 	OperationRequestOptions,
@@ -16,23 +17,21 @@ import type {
 	AllAutosResponseData,
 	DragonsResponse,
 	DragonsResponseData,
-	users_getResponse,
-	users_getInput,
-	users_getResponseData,
-	users_subscribeResponse,
-	users_subscribeInput,
-	users_subscribeResponseData,
-	users_updateResponse,
-	users_updateInput,
-	users_updateResponseData,
+	UsersGetResponse,
+	UsersGetInput,
+	UsersGetResponseData,
+	UsersSubscribeResponse,
+	UsersSubscribeInput,
+	UsersSubscribeResponseData,
+	UsersUpdateResponse,
+	UsersUpdateInput,
+	UsersUpdateResponseData,
 } from "./models";
 
 export type UserRole = "admin" | "user";
 
 export const WUNDERGRAPH_S3_ENABLED = false;
 export const WUNDERGRAPH_AUTH_ENABLED = true;
-
-export type UploadConfig = UploadRequestOptions<never>;
 
 export enum AuthProviderId {
 	"github" = "github",
@@ -44,9 +43,9 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "e5b8aeed",
+	applicationHash: "7d66de29",
 	baseURL: "http://localhost:9991",
-	sdkVersion: "0.131.0",
+	sdkVersion: "0.132.1",
 };
 
 export const operationMetadata: OperationMetadata = {
@@ -56,13 +55,13 @@ export const operationMetadata: OperationMetadata = {
 	Dragons: {
 		requiresAuthentication: false,
 	},
-	users_get: {
+	"users/get": {
 		requiresAuthentication: false,
 	},
-	users_subscribe: {
+	"users/subscribe": {
 		requiresAuthentication: false,
 	},
-	users_update: {
+	"users/update": {
 		requiresAuthentication: false,
 	},
 };
@@ -93,9 +92,6 @@ export class WunderGraphClient extends Client {
 		cb: SubscriptionEventHandler<Data>
 	) {
 		return super.subscribe(options, cb);
-	}
-	public async uploadFiles(config: UploadConfig) {
-		return super.uploadFiles(config);
 	}
 	public login(authProviderID: Operations["authProvider"], redirectURI?: string) {
 		return super.login(authProviderID, redirectURI);
@@ -128,8 +124,8 @@ export type Queries = {
 		liveQuery: boolean;
 	};
 	"users/get": {
-		input: users_getInput;
-		data: users_getResponseData;
+		input: UsersGetInput;
+		data: UsersGetResponseData;
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
@@ -137,16 +133,16 @@ export type Queries = {
 
 export type Mutations = {
 	"users/update": {
-		input: users_updateInput;
-		data: users_updateResponseData;
+		input: UsersUpdateInput;
+		data: UsersUpdateResponseData;
 		requiresAuthentication: false;
 	};
 };
 
 export type Subscriptions = {
 	"users/subscribe": {
-		input: users_subscribeInput;
-		data: users_subscribeResponseData;
+		input: UsersSubscribeInput;
+		data: UsersSubscribeResponseData;
 		requiresAuthentication: false;
 	};
 };
@@ -165,12 +161,12 @@ export type LiveQueries = {
 		requiresAuthentication: false;
 	};
 	"users/get": {
-		input: users_getInput;
-		data: users_getResponseData;
+		input: UsersGetInput;
+		data: UsersGetResponseData;
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
 };
 
 export interface Operations
-	extends OperationsDefinition<Queries, Mutations, Subscriptions, UserRole, keyof typeof AuthProviderId> {}
+	extends OperationsDefinition<Queries, Mutations, Subscriptions, UserRole, {}, keyof typeof AuthProviderId> {}
