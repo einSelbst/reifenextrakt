@@ -11,7 +11,21 @@ import {
 	SubscriptionEventHandler,
 	FetchUserRequestOptions,
 } from "@wundergraph/sdk/client";
-import type { AllStoresResponse, AllStoresResponseData, DragonsResponse, DragonsResponseData } from "./models";
+import type {
+	AllAutosResponse,
+	AllAutosResponseData,
+	DragonsResponse,
+	DragonsResponseData,
+	users_getResponse,
+	users_getInput,
+	users_getResponseData,
+	users_subscribeResponse,
+	users_subscribeInput,
+	users_subscribeResponseData,
+	users_updateResponse,
+	users_updateInput,
+	users_updateResponseData,
+} from "./models";
 
 export type UserRole = "admin" | "user";
 
@@ -30,16 +44,25 @@ export interface AuthProvider {
 }
 
 export const defaultClientConfig: ClientConfig = {
-	applicationHash: "f1458538",
+	applicationHash: "e5b8aeed",
 	baseURL: "http://localhost:9991",
 	sdkVersion: "0.131.0",
 };
 
 export const operationMetadata: OperationMetadata = {
-	AllStores: {
+	AllAutos: {
 		requiresAuthentication: false,
 	},
 	Dragons: {
+		requiresAuthentication: false,
+	},
+	users_get: {
+		requiresAuthentication: false,
+	},
+	users_subscribe: {
+		requiresAuthentication: false,
+	},
+	users_update: {
 		requiresAuthentication: false,
 	},
 };
@@ -92,9 +115,9 @@ export const createClient = (config?: CreateClientConfig) => {
 };
 
 export type Queries = {
-	AllStores: {
+	AllAutos: {
 		input?: undefined;
-		data: AllStoresResponseData;
+		data: AllAutosResponseData;
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
@@ -104,22 +127,46 @@ export type Queries = {
 		requiresAuthentication: false;
 		liveQuery: boolean;
 	};
+	"users/get": {
+		input: users_getInput;
+		data: users_getResponseData;
+		requiresAuthentication: false;
+		liveQuery: boolean;
+	};
 };
 
-export type Mutations = {};
+export type Mutations = {
+	"users/update": {
+		input: users_updateInput;
+		data: users_updateResponseData;
+		requiresAuthentication: false;
+	};
+};
 
-export type Subscriptions = {};
+export type Subscriptions = {
+	"users/subscribe": {
+		input: users_subscribeInput;
+		data: users_subscribeResponseData;
+		requiresAuthentication: false;
+	};
+};
 
 export type LiveQueries = {
-	AllStores: {
+	AllAutos: {
 		input?: undefined;
-		data: AllStoresResponseData;
+		data: AllAutosResponseData;
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
 	Dragons: {
 		input?: undefined;
 		data: DragonsResponseData;
+		liveQuery: true;
+		requiresAuthentication: false;
+	};
+	"users/get": {
+		input: users_getInput;
+		data: users_getResponseData;
 		liveQuery: true;
 		requiresAuthentication: false;
 	};
