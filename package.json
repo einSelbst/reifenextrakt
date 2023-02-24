@@ -33,7 +33,7 @@
     "tsup": "latest",
     "turbo": "1.7.0"
   },
-    "engines": {
+  "engines": {
     "node": ">=18.0.0"
   },
   "packageManager": "npm@9.5.0"
