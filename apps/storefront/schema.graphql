@@ -129,9 +129,9 @@ type Dimension {
 
 type Auto {
   id: ID!
-  MemberState: String# MemberState #AT
+  MemberState: String # MemberState #AT
   # Mh: Mh # AA-IVA
-  Manufacturer: String  #AA-IVA
+  Manufacturer: String #AA-IVA
   # MMS: MMS # ANDERE
   # TAN: TAN #14293/2012
   # Type: Type #
@@ -183,20 +183,20 @@ type User {
 }
 
 type Stat {
-    views: Int
-    likes: Int
-    retweets: Int
-    responses: Int
+  views: Int
+  likes: Int
+  retweets: Int
+  responses: Int
 }
 
 type Notification {
-    id: ID
-    date: Date
-    type: String
+  id: ID
+  date: Date
+  type: String
 }
 
 type Meta {
-    count: Int
+  count: Int
 }
 
 type Query {
@@ -221,6 +221,6 @@ type Reminder @embedded {
 }
 
 # type Query {
-  # allTodos: [Todo!]
-  # todosByCompletedFlag(completed: Boolean!): [Todo!]
+# allTodos: [Todo!]
+# todosByCompletedFlag(completed: Boolean!): [Todo!]
 # }

@@ -44,8 +44,8 @@ configureWunderGraphApplication({
     ...cors.allowAll,
     allowedOrigins:
       process.env.NODE_ENV === 'production'
-      ? ['https://reifenextrakt-storefront.vercel.app']
-      : ['http://localhost:3002'],
+        ? ['https://reifenextrakt-storefront.vercel.app']
+        : ['http://localhost:3002'],
   },
   authentication: {
     cookieBased: {
