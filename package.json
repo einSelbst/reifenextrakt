@@ -1,5 +1,9 @@
 {
   "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
   "scripts": {
     " ----------------------- Development ----------------------- ": "",
     "dev": "turbo run dev --no-cache --continue",
@@ -29,5 +33,8 @@
     "tsup": "latest",
     "turbo": "1.7.0"
   },
-  "packageManager": "pnpm@7.15.0"
+    "engines": {
+    "node": ">=18.0.0"
+  },
+  "packageManager": "npm@9.5.0"
 }
